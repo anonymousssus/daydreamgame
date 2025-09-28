@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://cc7r1kdn36qw1"]
+
+[ext_resource type="Texture2D" uid="uid://e8y8fmcww0j7" path="res://assets/caprijelly.png" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://rt4dgm35hm58" path="res://scenes/enemy.gd" id="1_md0e3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_md0e3"]
+atlas = ExtResource("1_7p1mj")
+region = Rect2(0, 0, 11, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ra3w"]
+atlas = ExtResource("1_7p1mj")
+region = Rect2(11, 0, 11, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5uy6h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_md0e3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ra3w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.5
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
+size = Vector2(17.75, 17.12944)
+
+[node name="enemy" type="RigidBody2D"]
+scale = Vector2(4, 4)
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_md0e3")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_5uy6h")
+autoplay = "default"
+frame_progress = 0.42019385
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0.125, 2.8725004)
+scale = Vector2(1.0371357, 2.1531615)
+shape = SubResource("RectangleShape2D_md0e3")
