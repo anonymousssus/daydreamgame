@@ -1,22 +1,23 @@
-[gd_scene load_steps=31 format=3 uid="uid://dsljer5e82q1c"]
+[gd_scene load_steps=33 format=3 uid="uid://dsljer5e82q1c"]
 
 [ext_resource type="Script" uid="uid://dfck1r2m3m1iu" path="res://scenes/dialog.gd" id="1_rysoc"]
 [ext_resource type="PackedScene" uid="uid://doghdkpsehcch" path="res://scenes/character.tscn" id="1_yqjtg"]
 [ext_resource type="Script" uid="uid://dwkcm8svtrgur" path="res://scenes/character.gd" id="2_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://bk8liq8hhesoc" path="res://sprites/world_tileset.png" id="2_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://dq2ky12fbbkly" path="res://assets/heart and potion hehe.png" id="3_0tnpc"]
-[ext_resource type="Texture2D" uid="uid://bdtuv63olbqp3" path="res://assets/mercury.png" id="4_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://cq0y5cvb5oqr8" path="res://assets/venus.png" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://x753g5btfqhj" path="res://scenes/venus.tscn" id="6_p57ef"]
+[ext_resource type="Texture2D" uid="uid://bdtuv63olbqp3" path="res://assets/mercury.png" id="7_1kice"]
 [ext_resource type="FontFile" uid="uid://d4cqamqh4uv70" path="res://sprites/PixelOperator8-Bold.ttf" id="7_u5sy4"]
 [ext_resource type="Script" uid="uid://dg31fltk0nqpe" path="res://scenes/ene.gd" id="8_gee14"]
 [ext_resource type="Texture2D" uid="uid://csvd7sxoiae4l" path="res://assets/earth.png" id="8_vtaks"]
 [ext_resource type="Texture2D" uid="uid://d4vqrl8vky74" path="res://assets/mars.png" id="10_264po"]
 [ext_resource type="Texture2D" uid="uid://ebmfuoc23rou" path="res://assets/jupiter.png" id="11_1kice"]
 [ext_resource type="PackedScene" uid="uid://k3xwuh0bxgat" path="res://scenes/earth.tscn" id="11_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://cw72b2fvayxug" path="res://assets/saturn.png" id="12_1kice"]
+[ext_resource type="Script" uid="uid://d0ulw6kwunpv3" path="res://scenes/saturn.gd" id="12_5newe"]
 [ext_resource type="PackedScene" uid="uid://e6swqagc370h" path="res://scenes/spike.tscn" id="12_kvuet"]
 [ext_resource type="Script" uid="uid://cbe3b6yxe8umh" path="res://scenes/spike.gd" id="13_trtic"]
-[ext_resource type="PackedScene" uid="uid://cc7r1kdn36qw1" path="res://scenes/enemy.tscn" id="14_trtic"]
 [ext_resource type="PackedScene" uid="uid://ypnwrp8faocx" path="res://scenes/slimyfriend.tscn" id="15_ir15t"]
 [ext_resource type="Script" uid="uid://b6fu1fn52hy07" path="res://scenes/slimyfriend.gd" id="16_ca42v"]
 
@@ -190,19 +191,23 @@ radius = 305.20706
 [sub_resource type="LabelSettings" id="LabelSettings_gee14"]
 font = ExtResource("7_u5sy4")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1kice"]
+radius = 756.42975
+
 [sub_resource type="Animation" id="Animation_gee14"]
-length = 0.001
+length = 4.0
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(320, 64)]
+"values": [Vector2(2296, 93), Vector2(2850, 93)]
 }
 
 [sub_resource type="Animation" id="Animation_u5sy4"]
@@ -279,24 +284,43 @@ script = ExtResource("2_lbhrr")
 [node name="Camera2D" type="Camera2D" parent="character"]
 position = Vector2(0, 1.5)
 scale = Vector2(0.5, 0.5)
-zoom = Vector2(2, 2)
+zoom = Vector2(1.8, 1.8)
 
 [node name="Heart0" type="Sprite2D" parent="character/Camera2D"]
-position = Vector2(-272, -144)
+z_index = 50
+position = Vector2(-291.5, -119.255005)
 scale = Vector2(5, 4.915)
 texture = ExtResource("3_0tnpc")
 region_enabled = true
 region_rect = Rect2(1, 3, 7, 6)
 
 [node name="Heart1" type="Sprite2D" parent="character/Camera2D"]
-position = Vector2(-240, -144)
+z_index = 50
+position = Vector2(-274.5, -134.255)
 scale = Vector2(5, 4.915)
 texture = ExtResource("3_0tnpc")
 region_enabled = true
 region_rect = Rect2(1, 3, 7, 6)
 
 [node name="Heart2" type="Sprite2D" parent="character/Camera2D"]
-position = Vector2(-208, -144)
+z_index = 50
+position = Vector2(-256.5, -119.255005)
+scale = Vector2(5, 4.915)
+texture = ExtResource("3_0tnpc")
+region_enabled = true
+region_rect = Rect2(1, 3, 7, 6)
+
+[node name="Heart3" type="Sprite2D" parent="character/Camera2D"]
+z_index = 50
+position = Vector2(-238.5, -134.255)
+scale = Vector2(5, 4.915)
+texture = ExtResource("3_0tnpc")
+region_enabled = true
+region_rect = Rect2(1, 3, 7, 6)
+
+[node name="Heart4" type="Sprite2D" parent="character/Camera2D"]
+z_index = 50
+position = Vector2(-221.49998, -119.255005)
 scale = Vector2(5, 4.915)
 texture = ExtResource("3_0tnpc")
 region_enabled = true
@@ -307,10 +331,6 @@ scale = Vector2(1.6804949, -4.266257)
 tile_set = SubResource("TileSet_iywne")
 
 [node name="Mercury" type="StaticBody2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="Mercury"]
-position = Vector2(0, 308)
-texture = ExtResource("4_lbhrr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mercury"]
 position = Vector2(0, 304)
@@ -324,6 +344,10 @@ offset_bottom = 81.0
 text = "Mercury
 "
 label_settings = SubResource("LabelSettings_gee14")
+
+[node name="Sprite2D" type="Sprite2D" parent="Mercury"]
+position = Vector2(0, 313)
+texture = ExtResource("7_1kice")
 
 [node name="Venus" type="StaticBody2D" parent="."]
 position = Vector2(944, -5)
@@ -378,8 +402,8 @@ scale = Vector2(1.4, 1.4)
 texture = ExtResource("10_264po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mars"]
-position = Vector2(9.536743e-07, 313)
-scale = Vector2(1.05, 1.05)
+position = Vector2(9.536743e-07, 314.00003)
+scale = Vector2(1.1, 1.05)
 shape = SubResource("CircleShape2D_iywne")
 
 [node name="Label3" type="Label" parent="Mars"]
@@ -387,7 +411,8 @@ offset_left = -40.0
 offset_top = 24.0
 offset_right = 74.0
 offset_bottom = 73.0
-text = "Earth
+text = "Mars
+
 "
 label_settings = SubResource("LabelSettings_gee14")
 
@@ -405,16 +430,44 @@ scale = Vector2(1.05, 1.05)
 shape = SubResource("CircleShape2D_iywne")
 
 [node name="Label3" type="Label" parent="Jupiter"]
-offset_left = -40.0
-offset_top = 24.0
-offset_right = 74.0
-offset_bottom = 73.0
-text = "Earth
+offset_left = -24.0
+offset_top = 38.0
+offset_right = 90.0
+offset_bottom = 87.0
+text = "Jupiter
 "
 label_settings = SubResource("LabelSettings_gee14")
 
+[node name="Saturn" type="StaticBody2D" parent="."]
+position = Vector2(6260, 0)
+script = ExtResource("12_5newe")
+
+[node name="Sprite2D" type="Sprite2D" parent="Saturn"]
+position = Vector2(-7.9999995, 308.99997)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("12_1kice")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Saturn"]
+position = Vector2(9.536743e-07, 313)
+scale = Vector2(1.05, 1.05)
+shape = SubResource("CircleShape2D_iywne")
+
+[node name="Label3" type="Label" parent="Saturn"]
+offset_left = -65.0
+offset_top = 24.0
+offset_right = 49.0
+offset_bottom = 73.0
+text = "Saturn"
+label_settings = SubResource("LabelSettings_gee14")
+
+[node name="SaturnArea" type="Area2D" parent="Saturn"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Saturn/SaturnArea"]
+position = Vector2(0, 321)
+shape = SubResource("CircleShape2D_1kice")
+
 [node name="VenusPlatform" parent="." instance=ExtResource("6_p57ef")]
-position = Vector2(320, 64)
+position = Vector2(2296, 93)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="VenusPlatform"]
 libraries = {
@@ -422,21 +475,60 @@ libraries = {
 }
 autoplay = "venus move"
 
+[node name="VenusPlatform5" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(2296, 93)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VenusPlatform5"]
+libraries = {
+&"": SubResource("AnimationLibrary_0tnpc")
+}
+autoplay = "venus move"
+
+[node name="VenusPlatform6" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(2296, 93)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VenusPlatform6"]
+libraries = {
+&"": SubResource("AnimationLibrary_0tnpc")
+}
+autoplay = "venus move"
+
+[node name="VenusPlatform2" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(2296, 93)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VenusPlatform2"]
+libraries = {
+&"": SubResource("AnimationLibrary_0tnpc")
+}
+autoplay = "RESET"
+
+[node name="VenusPlatform3" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(2296, 93)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VenusPlatform3"]
+libraries = {
+&"": SubResource("AnimationLibrary_0tnpc")
+}
+autoplay = "RESET"
+
+[node name="VenusPlatform4" parent="." instance=ExtResource("6_p57ef")]
+position = Vector2(2296, 93)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VenusPlatform4"]
+libraries = {
+&"": SubResource("AnimationLibrary_0tnpc")
+}
+autoplay = "RESET"
+
 [node name="Area2D" type="Area2D" parent="."]
 visible = false
-position = Vector2(448, -5)
-scale = Vector2(1, 1.4399999)
+position = Vector2(1377, 4.999999)
+scale = Vector2(2.8800006, 3.4)
 script = ExtResource("8_gee14")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(560, 68)
 shape = SubResource("RectangleShape2D_0tnpc")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(0, -3)
-scale = Vector2(2, 2)
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 
 [node name="EarthPlatform" parent="." instance=ExtResource("11_kvpfn")]
 position = Vector2(1240, 88)
@@ -456,10 +548,6 @@ position = Vector2(756, 20.00003)
 rotation = -0.7853982
 script = ExtResource("13_trtic")
 
-[node name="enemy" parent="." instance=ExtResource("14_trtic")]
-position = Vector2(-181, -90)
-scale = Vector2(1.0356605, 0.9609533)
-
 [node name="slimyFriend" parent="." instance=ExtResource("15_ir15t")]
 position = Vector2(-49, -3)
 scale = Vector2(2, 2)
@@ -469,4 +557,3 @@ script = ExtResource("16_ca42v")
 [connection signal="body_shape_exited" from="Area2D" to="character" method="_on_area_2d_body_shape_exited"]
 [connection signal="body_entered" from="Spike" to="character" method="_on_spike_body_entered"]
 [connection signal="body_entered" from="Spike2" to="character" method="_on_spike_body_entered"]
-[connection signal="body_entered" from="enemy" to="character" method="_on_enemy_body_entered"]

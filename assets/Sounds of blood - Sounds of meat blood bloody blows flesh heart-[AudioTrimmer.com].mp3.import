@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://7n25lxgjrwjo"
+path="res://.godot/imported/Sounds of blood - Sounds of meat blood bloody blows flesh heart-[AudioTrimmer.com].mp3-90f73cb33fb4841c64b13392f3bd5203.mp3str"
+
+[deps]
+
+source_file="res://assets/Sounds of blood - Sounds of meat blood bloody blows flesh heart-[AudioTrimmer.com].mp3"
+dest_files=["res://.godot/imported/Sounds of blood - Sounds of meat blood bloody blows flesh heart-[AudioTrimmer.com].mp3-90f73cb33fb4841c64b13392f3bd5203.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

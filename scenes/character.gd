@@ -6,8 +6,10 @@ const SPEED = 150
 const JUMP_VELOCITY = -400
 @onready var selfchar = get_node(".")
 
-var lives = 3
+var lives = 5
 
+func _ready():
+	Dialogic.signal_event.connect(_on_dialogic_signal)
 
 
 
@@ -32,10 +34,13 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	lives = lives - 1
-	get_node("./Camera2D/Heart" + str(lives)).visible = false
-	global_position=Vector2(0,-3.0)
-	selfchar.position = global_position
+	if str(get_node(body.get_path())) == str(get_node('.')):
+		lives = lives - 1
+		get_node("./Camera2D/Heart" + str(lives)).visible = false
+		global_position=Vector2(0,-3.0)
+		selfchar.position = global_position
+	else:
+		pass
 	
 
 
@@ -58,5 +63,22 @@ func _on_enemy_body_entered(body: Node) -> void:
 func _process(delta: float) -> void:
 	if lives == 0:
 		get_tree().change_scene_to_file("res://scenes/gameover.tscn")
+	else:
+		pass
+
+
+
+func _on_saturn_area_body_entered(body: Node2D) -> void:
+	if str(get_node(body.get_path())) == str(get_node('.')):
+		Dialogic.start('sacrifice')
+	else:
+		pass
+		
+		
+
+
+func _on_dialogic_signal(argument:String):
+	if argument == "sacrifice_then":
+		get_tree().change_scene_to_file("res://scenes/sacrifice.tscn")
 	else:
 		pass
